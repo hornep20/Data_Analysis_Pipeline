@@ -1,0 +1,2 @@
+Census Data - https://en.wikipedia.org/wiki/List_of_North_Carolina_locations_by_per_capita_income
+Birth Data - https://schs.dph.ncdhhs.gov/interactive/query/births/bd_2016andlater.cfm
