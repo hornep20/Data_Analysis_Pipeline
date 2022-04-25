@@ -119,26 +119,6 @@ CREATE TRIGGER clean_care_2019
     FOR EACH ROW
     EXECUTE PROCEDURE clean_counties();
 
--- Create the care_total table.
---DROP TABLE IF EXISTS care_total;
---CREATE TABLE care_total (
---    Counties            TEXT,
---    None_Care           INT,
---    First_Trimester     INT,
---    Second_Trimester    INT,
---    Third_Trimester     INT,
- --   Unknown_Care        INT,
---    Total_Care          INT,
---    Year                TEXT
---);
-
---CREATE TRIGGER clean_care_total
---    BEFORE INSERT
---    ON care_total
---    FOR EACH ROW
---    EXECUTE PROCEDURE clean_counties();
-
-
 -- Create the gender_2016 table.
 DROP TABLE IF EXISTS gender_2016;
 CREATE TABLE gender_2016 (
@@ -206,24 +186,6 @@ CREATE TRIGGER clean_gender_2019
     ON gender_2019
     FOR EACH ROW
     EXECUTE PROCEDURE clean_counties();
-
--- Create the gender_total table.
---DROP TABLE IF EXISTS gender_total;
---CREATE TABLE gender_total (
---    Counties            TEXT,
---    male                INT,
---    female              INT,
---    unknown_gender      INT,
---    total_gender        INT,
---    Year                TEXT
---);
-
---CREATE TRIGGER clean_gender_total
---    BEFORE INSERT
---    ON gender_total
- --   FOR EACH ROW
---    EXECUTE PROCEDURE clean_counties();
-
 
 -- Create the plural_2016 table.
 DROP TABLE IF EXISTS plural_2016;
@@ -297,24 +259,6 @@ CREATE TRIGGER clean_plural_2019
     FOR EACH ROW
     EXECUTE PROCEDURE clean_counties();
 
--- Create the plural_total table.
---DROP TABLE IF EXISTS plural_total;
---CREATE TABLE plural_total (
---    Counties            TEXT,
---    singleton           INT,
---    twins               INT,
---    other_multiples     INT,
---    unknown_plural      INT,
---    total_plural        INT,
---    Year                TEXT
---);
-
---CREATE TRIGGER clean_plural_total
---    BEFORE INSERT
---    ON plural_total
---    FOR EACH ROW
---    EXECUTE PROCEDURE clean_counties();
-
 -- Create the race_2016 table.
 DROP TABLE IF EXISTS race_2016;
 CREATE TABLE race_2016 (
@@ -386,24 +330,6 @@ CREATE TRIGGER clean_race_2019
     ON race_2019
     FOR EACH ROW
     EXECUTE PROCEDURE clean_counties();
-
--- Create the race_total table.
---DROP TABLE IF EXISTS race_total;
---CREATE TABLE race_total (
---    Counties                        TEXT,
---    White_Non_Hispanic              INT,
---    African_American_Non_Hispanic   INT,
---    Other_Non_Hispanic              INT,
---    Hispanic                        INT,
---    Total_Race                      INT,
---    Year                            TEXT
---);
-
---CREATE TRIGGER clean_race_total
---    BEFORE INSERT
---    ON race_total
---    FOR EACH ROW
---    EXECUTE PROCEDURE clean_counties();
 
 -- Create the weight_2016 table.
 DROP TABLE IF EXISTS weight_2016;
@@ -483,10 +409,11 @@ CREATE TRIGGER clean_weight_2019
 -- Create the census table.
 DROP TABLE IF EXISTS census;
 CREATE TABLE census (
-    Counties                TEXT,
-    Per_Capital_Income      INT,
-    Median_Houshold_Income  INT,
-    Population              INT
+    Counties    TEXT,
+    Pop_2016    INT,
+    Pop_2017    INT,
+    Pop_2018    INT,
+    Pop_2019    INT
 );
 
 CREATE TRIGGER clean_census
@@ -496,24 +423,6 @@ CREATE TRIGGER clean_census
     EXECUTE PROCEDURE clean_counties();
 
 
-
-    -- Create the weight_total table.
---DROP TABLE IF EXISTS weight_total;
---CREATE TABLE weight_total (
---    Counties        TEXT,
---    gms_0_499       INT,
---    gms_500_1499    INT,
---    gms_1500_2499   INT,
---    gms_2500_8165   INT,
---    Unknown_weight  INT,
---    Total_weight    INT,
---    Year            TEXT
---);
---CREATE TRIGGER clean_weight_total
---    BEFORE INSERT
---    ON weight_total
---    FOR EACH ROW
---    EXECUTE PROCEDURE clean_counties();
 
 
 

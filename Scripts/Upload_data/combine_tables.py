@@ -63,8 +63,26 @@ def load(host, port, dbname, schema, user, password):
     table_weight_2017 = pd.read_sql_query('SELECT * FROM {}.{};'.format(schema,'weight_2017'), con=conn)
     table_weight_2018 = pd.read_sql_query('SELECT * FROM {}.{};'.format(schema,'weight_2018'), con=conn)
     table_weight_2019 = pd.read_sql_query('SELECT * FROM {}.{};'.format(schema,'weight_2019'), con=conn)
-    
 
+    # Census Table
+    table_census_total = pd.read_sql_query('SELECT * FROM {}.{}'.format(schema, 'census'), con=conn)
+    table_census_2016 = table_census_total[['counties','pop_2016']]
+    table_census_2016['year'] = '2016'
+    table_census_2016 = table_census_2016.rename(columns = {'pop_2016' : 'pop'})
+
+    table_census_2017 = table_census_total[['counties','pop_2017']]
+    table_census_2017['year'] = '2017'
+    table_census_2017 = table_census_2017.rename(columns = {'pop_2017' : 'pop'})
+
+    table_census_2018 = table_census_total[['counties','pop_2018']]
+    table_census_2018['year'] = '2018'
+    table_census_2018 = table_census_2018.rename(columns = {'pop_2018' : 'pop'})
+
+    table_census_2019 = table_census_total[['counties','pop_2019']]
+    table_census_2019['year'] = '2019'
+    table_census_2019 = table_census_2019.rename(columns = {'pop_2019' : 'pop'})
+    
+    # Appending like tables together
     table_care = table_care_2016.append([table_care_2017, table_care_2018,
         table_care_2019], ignore_index=True)
     table_gender = table_gender_2016.append([table_gender_2017, table_gender_2018,
@@ -75,11 +93,17 @@ def load(host, port, dbname, schema, user, password):
         table_race_2019], ignore_index=True)
     table_weight = table_weight_2016.append([table_weight_2017, table_weight_2018,
         table_weight_2019], ignore_index=True)
+    table_census = table_census_2016.append([table_census_2017, table_census_2018,
+        table_census_2019], ignore_index=True)
 
+    # Merging tables and dropping total columns
     table_totals = table_care.merge(table_gender, how='inner', on =['counties', 'year'])
     table_totals = table_totals.merge(table_plural, how='inner', on =['counties', 'year'])
     table_totals = table_totals.merge(table_race, how='inner', on =['counties', 'year'])
-    table_totals = table_totals.merge(table_weight, how='inner', on =['counties', 'year'])  
+    table_totals = table_totals.merge(table_weight, how='inner', on =['counties', 'year'])
+    table_totals = table_totals.merge(table_census, how='inner', on =['counties', 'year']) 
+    table_totals = table_totals.drop(['total_care', 'total_gender', 
+        'total_plural', 'total_race', 'total_weight'], axis=1) 
   
 
     fnc.copyFromDF(schema, 'care_total', table_care, connDetails)
@@ -96,7 +120,7 @@ def load(host, port, dbname, schema, user, password):
 ##### MAIN #####################################################################
 if __name__ == "__main__":
     # Help/error text
-    help = 'combine_data.py -h|--host <host> -p|--port <port> -d|--dbname <dbname> -U|--user <user> -P|--password <password>'
+    help = 'combine_tables.py -h|--host <host> -p|--port <port> -d|--dbname <dbname> -U|--user <user> -P|--password <password>'
     
     # Variables
     host = ''

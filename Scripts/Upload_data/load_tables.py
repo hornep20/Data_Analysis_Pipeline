@@ -72,7 +72,7 @@ file_care_2019 = birth_dir + '2019_birth_care.csv'
 table_census = 'census'
 
 # Census File
-file_census = birth_dir + 'census.csv'
+file_census = birth_dir + 'pop.csv'
 
 ##### LOAD NC BIRTH DATA ###################################################################
 schema = 'finalproject'
@@ -128,7 +128,7 @@ def load(host, port, dbname, schema, user, password):
 ##### MAIN #####################################################################
 if __name__ == "__main__":
     # Help/error text
-    help = 'load_data.py -h|--host <host> -p|--port <port> -d|--dbname <dbname> -U|--user <user> -P|--password <password>'
+    help = 'load_tables.py -h|--host <host> -p|--port <port> -d|--dbname <dbname> -U|--user <user> -P|--password <password>'
     
     # Variables
     host = ''
