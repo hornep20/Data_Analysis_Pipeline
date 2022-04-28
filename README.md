@@ -4,4 +4,4 @@ This repo illustrates the analysis of NC birth and census data using python and 
 
 
 ### Pipeline
-![pipeline](/img/Pipelin.png)
+![pipeline](/img/Pipeline.png)
