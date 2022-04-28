@@ -16,3 +16,5 @@ This repo illustrates the analysis of NC birth and census data using python and 
 2.) In the variables.sh file, assign the correct path to the activate_anaconda and python variables
 
 ![conda_python_path](/img/conda_python_path.png)
+
+3.) Move the directory to your pvt folder and call the execute_pipeline.sh file from the command line
