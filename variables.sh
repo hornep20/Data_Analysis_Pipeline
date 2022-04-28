@@ -1,5 +1,4 @@
 #!/bin/bash
-# TextEdit -> Format -> Make Plain Text -> OK
 # ---------------------------------------------------------------
 #  PostgreSQL: Connection details and psql path
 # ---------------------------------------------------------------
@@ -8,7 +7,7 @@ port=5432
 dbname=cohe_6590_armc
 user=cohe_armc
 schema=finalproject
-postgres=/Library/PostgreSQL/13/bin/psql
+postgres=your-path-here
 
 # ---------------------------------------------------------------
 # PostgreSQL: Password environment variable
@@ -18,8 +17,8 @@ export PGPASSWORD=cohe_armc_password
 # ---------------------------------------------------------------
 # Python: Anaconda activate and python paths
 # ---------------------------------------------------------------
-activate_anaconda=/Users/Patrick/Desktop/MS_Data_Science/anaconda3/bin/activate
-python=/Users/Patrick/Desktop/MS_Data_Science/anaconda3/bin/python
+activate_anaconda=your-path-here
+python=your-path-here
 
 # ---------------------------------------------------------------
 # Directories
