@@ -18,3 +18,5 @@ This repo illustrates the analysis of NC birth and census data using python and 
 ![conda_python_path](/img/conda_python_path.png)
 
 3.) Move the directory to your pvt folder and call the execute_pipeline.sh file from the command line
+
+4.) From the Terminal, execute the execute_pipeline.sh file
